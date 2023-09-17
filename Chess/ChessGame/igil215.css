@@ -1,0 +1,346 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: "Lato", sans-serif;
+}
+
+.flex {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.custom-color {
+  color: #a12312;
+}
+
+.custom-background-color {
+  background-color: #a12312;
+}
+
+.intro-title {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+}
+
+.heading-title {
+  color: #daf7a6;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 500%;
+}
+
+.intro-title-shop {
+  background-color: #ffff8f;
+  width: 80%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  overflow: scroll;
+  border-style: solid;
+  text-align: center;
+  margin: auto;
+  height: 70em;
+}
+
+.nav-bar-base {
+  background: #ffff8f;
+  text-align: center;
+}
+
+.logo {
+  padding-bottom: 0.5%;
+  width: 3%;
+  margin-left: 5%;
+  cursor: pointer;
+}
+
+footer {
+  background: rgb(255, 255, 143);
+  color: black;
+  font-size: 120%;
+  text-align: center;
+  font-weight: bold;
+  position: relative;
+  bottom: 0%;
+  width: 100%;
+  height: 9%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.logo-pad {
+  cursor: pointer;
+  padding-left: 5%;
+  width: 10%;
+  font-size: 270%;
+}
+
+#home {
+  position: relative;
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+
+#shop {
+  position: relative;
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+#registration {
+  position: relative;
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+#login {
+  position: relative;
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+#game {
+  position: relative;
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+#guest {
+  position: relative;
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+
+.home-logo {
+  width: 40%;
+}
+
+.versionJS {
+  color: lime;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 2em;
+}
+
+.home-intro {
+  color: #daf7a6;
+  font-weight: bolder;
+  text-align: center;
+}
+.home-blurb {
+  color: #daf7a6;
+  text-align: center;
+}
+
+.item-photo {
+  height: 10%;
+  width: 82%;
+  border-radius: 25px;
+}
+
+#shopTable {
+  box-sizing: inherit;
+  padding-right: 1%;
+  text-align: center;
+  font-family: "Lato", sans-serif;
+}
+
+.col-header {
+  font-size: larger;
+  font-weight: bold;
+}
+
+#buy-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  color: white;
+  background: #1295a1;
+  border-radius: 25px;
+  padding-left: 1%;
+  padding-right: 1%;
+  opacity: 90%;
+  text-align: center;
+}
+
+.regFormDiv {
+  background-color: #ffff8f;
+  width: 80%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  border-style: solid;
+  text-align: center;
+  margin: auto;
+}
+
+.inputBox {
+  width: 100%;
+  padding: 1%;
+  background: #f1f1f1;
+}
+
+.regHeadings {
+  text-align: left;
+  font-weight: bold;
+  color: #daf7a6;
+}
+
+.regHeadingsLogin {
+  text-align: left;
+  font-weight: bold;
+  color: purple;
+}
+
+.submitButton {
+  font-size: 150%;
+  background-color: purple;
+  color: white;
+  cursor: pointer;
+  width: 25%;
+  opacity: 0.9;
+  margin-top: 5%;
+}
+
+.submitButton:hover {
+  opacity: 1;
+}
+
+#login-nav {
+  font-size: 150%;
+  display: inline-block;
+  text-decoration: underline;
+  text-align: center;
+}
+
+#usrSearch {
+  background-image: url("https://cws.auckland.ac.nz/gas/images/Rb.svg");
+  background-repeat: no-repeat;
+  background-color: purple;
+  color: #ffff8f;
+  width: 94%;
+  font-size: 18px;
+  padding: 15px 15px 15px 50px;
+  border: 1px solid black;
+  margin-bottom: 1.5%;
+}
+
+::placeholder {
+  color: red;
+  opacity: 1;
+}
+
+.commentBox {
+  width: 100%;
+  padding-bottom: 32%;
+  background: #f1f1f1;
+  height: 2em;
+  overflow: scroll;
+  padding-top: 2%;
+}
+
+#entryTable {
+  box-sizing: inherit;
+  font-family: "Lato", sans-serif;
+}
+
+.recentEntries {
+  background-color: #ffff8f;
+  width: 100%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  overflow: scroll;
+  border-style: solid;
+  text-align: left;
+  margin: auto;
+  height: 70em;
+}
+
+.chessContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.chessBoard {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.chessBoard th {
+  padding: 1.5em;
+}
+
+.chessBoard td {
+  border: 1px solid;
+  width: 5em;
+  height: 5em;
+}
+
+.chessBoard .purple {
+  background: purple;
+}
+
+.chessBoard .custom {
+  background: #a12312;
+}
+
+.chessBoard .cream {
+  background: #ffff8f;
+}
+
+.bin-img {
+  width: 1.5em;
+}
+
+.chessRules {
+  position: relative;
+  margin-top:5%;
+  background-color: purple;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+.chessText {
+  color:#ffff8f;
+  text-align: left;
+  padding: 1% 1% 1% 1%;
+}
+
+.startPrompt {
+  color:#ffff8f;
+  opacity: 90%;;
+}
+
+.logoutNavButton {
+  font-size: 15px;
+  border-radius: 50%;
+  background-color: purple;
+  color: white;
+  cursor: pointer;
+}
+
+.loginWelcome {
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.vs {
+  color: lime;
+  font-weight: bold;
+}
+
+.commentArea {
+  padding-bottom: 32%;
+  color:white;
+  background: purple;
+  overflow: scroll;
+  padding-top: 2%;
+  width: 400px;
+  height: 150px;
+}

@@ -1,0 +1,317 @@
+<!--COMPSCI 335 A3 By Ish Gill-->
+<!--igil215-->
+<!--Tested and built in (Responsive, 1920 x 1080, 90%, No Throttling) and displays everything on Firefox and Chrome-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Game Academy</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Play&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="igil215.css" />
+    <script type="text/javascript" src="igil215.js"></script>
+  </head>
+
+  <div class="flex">
+  <!--Body of home page begins-->
+  <body onload="startUp();" class="custom-background-color">
+    <!-- Navbar -->
+    <div class="w3-top">
+      <div class="nav-bar-base">
+        <a onclick="showHome();" class="logo-pad custom-color">&#127968;</a>
+        <a onclick="showShop();" class="logo-pad custom-color">&#128722;</a>
+        <a onclick="showReg();" class="logo-pad custom-color">&#9997;</a>
+        <a onclick="showLogin();" class="logo-pad custom-color">&#128100;</a>
+        <a onclick="showGame();" class="logo-pad custom-color">&#x265B;</a>
+        <a onclick="showGuest();" class="logo-pad custom-color">&#128214;</a>
+        <a onclick="showLogin();" id="login-nav" class="logo-pad custom-color"></a>
+        <img
+          onclick="showHome();"
+          class="logo"
+          src="https://cws.auckland.ac.nz/gas/api/Logo"
+          alt="Game-academy-logo"
+        />
+      </div>
+    </div>
+
+    <!-- Home -->
+    <div id="home">
+      <div class="intro-title">
+        <h1 class="heading-title">Game of Chess</h1>
+        <h2 class="home-intro">Welcome to Game Academy!</h2>
+        <img
+          class="home-logo"
+          src="https://cws.auckland.ac.nz/gas/api/FavIcon"
+          alt="favicon"
+        />
+        <h3 class="home-blurb">
+          Thanks for visiting our website!<br />
+          We hope you have a pleasant experience.
+        </h3>
+        <h4 id="version"></h4>
+      </div>
+    </div>
+
+    <!-- Shop -->
+    <div id="shop">
+      <h1 class="heading-title">Shop</h1>
+      <div class="intro-title-shop">
+        <input type="text" id="usrSearch" onkeyup="itemSearchBar()" placeholder="Search for items!">
+        <table id="shopTable"></table>
+      </div>
+    </div>
+    <div id="buy-popup">
+      <h2>Thanks for purchasing this item!</h2>
+    </div>
+
+    <!-- Registration -->
+    <div id="registration">
+      <div class="intro-title">
+        <h1 class="heading-title">Registration</h1>
+        <div class="regFormDiv">
+          <form id="form">
+            <h2 class="regHeadingsLogin">Username</h2>
+            <input
+              class="inputBox"
+              name="username"
+              type="text"
+              placeholder="Enter Username"
+            />
+            <h2 class="regHeadingsLogin">Password</h2>
+            <input
+              class="inputBox"
+              name="password"
+              type="password"
+              placeholder="Enter Password"
+            />
+            <h2 class="regHeadingsLogin">Address</h2>
+            <input
+              class="inputBox"
+              name="address"
+              type="text"
+              placeholder="Enter Address"
+            />
+            <button class="submitButton" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login -->
+    <div id="login">
+      <div class="intro-title">
+        <h1 class="heading-title">Login</h1>
+        <div id="login-div" class="regFormDiv">
+        <form id="loginForm">
+          <h2 class="regHeadingsLogin">Username</h2>
+          <input
+            class="inputBox"
+            name="username"
+            type="text"
+            placeholder="Enter Username"
+          />
+          <h2 class="regHeadingsLogin">Password</h2>
+          <input
+            class="inputBox"
+            name="password"
+            type="password"
+            placeholder="Enter Password"
+          />
+          <button class="submitButton" type="loginSubmit">Login</button>
+        </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game of Chess -->
+    <div id="game">
+      <div class="intro-title">
+        <h1 class="heading-title">Game of Chess</h1>
+        <h2 class="home-intro">Let's play!</h2>
+        <div ondrop="mydrop(event)" ondragover="mydragover(event)"class="chessContainer">
+        <table class="chessBoard">
+          <tbody>
+              <tr>
+                  <th class="purple"></th>
+                  <th class="purple">a</th>
+                  <th class="purple">b</th>
+                  <th class="purple">c</th>
+                  <th class="purple">d</th>
+                  <th class="purple">e</th>
+                  <th class="purple">f</th>
+                  <th class="purple">g</th>
+                  <th class="purple">h</th>
+                  <th class="piece purple"><img class="bin-img" src='https://cws.auckland.ac.nz/gas/images/Bin.svg'></th>
+              </tr>
+              <tr>
+                  <th class="purple">8</th>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Rb.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Nb.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Bb.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Qb.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Kb.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Bb.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Nb.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Rb.svg'></td>
+                  <td class="piece purple">&#x265B;</td>
+              </tr>
+              <tr>
+                  <th class="purple">7</th>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pb.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pb.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pb.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pb.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pb.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pb.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pb.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pb.svg'></td>
+                  <td class="piece purple">&#x265B;</td>
+              </tr>
+              <tr>
+                  <th class="purple">6</th>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="piece purple">&#x265B;</td>
+              </tr>
+              <tr>
+                  <th class="purple">5</th>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="piece purple">&#x265B;</td>
+              </tr>
+              <tr>
+                  <th class="purple">4</th>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="piece purple">&#x265B;</td>
+              </tr>
+              <tr>
+                  <th class="purple">3</th>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="cream" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="custom" id="piece" ondragstart="mydragstart(event)"></td>
+                  <td class="piece purple">&#x265B;</td>
+              </tr>
+              <tr>
+                  <th class="purple">2</th>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pw.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pw.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pw.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pw.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pw.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pw.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pw.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Pw.svg'></td>
+                  <td class="piece purple">&#x265B;</td>
+              </tr>
+              <tr>
+                  <th class="purple">1</th>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Rw.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Nw.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Bw.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Qw.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Kw.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Bw.svg'></td>
+                  <td class="custom"><img id="piece" ondragstart="mydragstart(event)" src='https://cws.auckland.ac.nz/gas/images/Nw.svg'></td>
+                  <td class="cream"><img id="piece" ondragstart="mydragstart(event)"src='https://cws.auckland.ac.nz/gas/images/Rw.svg'></td>
+                  <td class="piece purple">&#x265B;</td>
+              </tr>
+              <tr>
+                <th class="piece purple"><img class="bin-img" src='https://cws.auckland.ac.nz/gas/images/Bin.svg'></th>
+                <td class="piece purple">&#x265B;</td>
+                <td class="piece purple">&#x265B;</td>
+                <td class="piece purple">&#x265B;</td>
+                <td class="piece purple">&#x265B;</td>
+                <td class="piece purple">&#x265B;</td>
+                <td class="piece purple">&#x265B;</td>
+                <td class="piece purple">&#x265B;</td>
+                <td class="piece purple">&#x265B;</td>
+                <td class="purple"></td>
+              </tr>
+          </tbody>
+      </table>
+      </div>
+      <div class="chessRules">
+        <h4 class="chessText">To capture a piece of the opponent, move the piece to one of the bins (in the top-right or bottom-left), and move your piece to where the opponent was. A piece moved to a bin cannot be recovered.</h4>
+        <h4 class="chessText">To swap two pieces (e.g., as in castling), move one piece to the temporary hold (in the top-left or bottom-right), move the second piece to where the first piece was, and finally move the piece from the temporary hold to where the second piece was.</h4>
+        <h4 class="chessText">To promote a pawn to a queen when the pawn has reached the last rank, move it to the bin, and move a queen from the stock to where the pawn was. A queen cannot be restocked once it is moved from the stock.</h4>
+      </div>
+      <div id="gameDiv" class="pairDiv">
+        <button class="submitButton" type="pairSubmit" onclick="userDetails(false)">Try Game</button>
+        <h5 id="tryGameHeading" class="startPrompt">To start click try game!</h5>
+      </div>
+        </div>
+    </div>
+
+    <!-- Guest book -->
+    <div id="guest">
+      <div class="intro-title">
+        <h1 class="heading-title">Guest Book</h1>
+        <h2 class="home-intro">Please sign our guestbook!</h2>
+          <form id="guestForm">
+            <h2 class="regHeadings">Your comment:</h2>
+            <textarea class="commentBox" name="comment" rows="5"></textarea>
+            <h2 class="regHeadings">Your name:</h2>
+            <input
+              class="inputBox"
+              name="username"
+              type="text"
+            />
+            <button class="submitButton" type="commentSubmit">Submit</button>
+          </form>
+          <button class="submitButton" type="refresh" onclick="populateComments()">Refresh</button>
+          <h2 class="regHeadings">Recent Entries:</h2>
+          <div class="recentEntries">
+            <table id="entryTable"></table>
+          </div>
+        </div>
+        </div>
+      </div>
+  </body>
+</div>
+
+  <!-- Footer -->
+    <footer>
+      © 2022 Game Academy | Terms of Use | Privacy Statement | Charitable
+      Solicitation Disclosures | Mobile Terms & Conditions | Title VI Notice of
+      Nondiscrimination
+    </footer>
+  </body>
+</html>
