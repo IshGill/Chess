@@ -459,3 +459,143 @@ const itemSearchBar = () => {
   getSearchBarData(tableRows, cleanInputId);
 };
 itemSearchBar();
+
+const userObjectTwo = (statusCode, username, password) => {
+    if (statusCode != 200) {
+        alert("Login unsuccessful!");
+        return null;
+    } else {
+        let input_user = localStorage.setItem("username", username);
+        let input_pass = localStorage.setItem("password", password);
+        alert(`Login successful!\nWelcome ${username}`);
+        const htmlTag = document.getElementById("login-nav");
+        htmlTag.innerHTML = `<p class="loginWelcome">Welcome ${username}<br><button id="logoutButton" class="logoutNavButton" type="loginSubmit">Logout</button></p>`;
+        const loginTag = document.getElementById("login-div");
+        loginTag.innerHTML = `<p>You are already logged in!</p><button id="logoutButton" class="submitButton" type="loginSubmit">Logout</button>`;
+        const logOutbtn = document.getElementById("logoutButton");
+        logOutbtn.addEventListener("click", function (e) {
+            htmlTag.innerHTML = `<p>Login</p>`;
+            loginTag.innerHTML = `<form id="loginForm">
+      <h2 class="regHeadings">Username</h2>
+      <input
+        class="inputBox"
+        name="username"
+        type="text"
+        placeholder="Enter Username"
+      />
+      <h2 class="regHeadings">Password</h2>
+      <input
+        class="inputBox"
+        name="password"
+        type="password"
+        placeholder="Enter Password"
+      />
+      <button class="submitButton" type="loginSubmit">Login</button>
+    </form>`;
+            location.reload();
+        });
+        var userObjectJSON = [
+            {
+                username: username,
+                password: password,
+            },
+        ];
+        showHome();
+        return userObjectJSON;
+    }
+};
+
+const userDetailsTwo = (flag) => {
+    const htmlTag = document.getElementById("login-nav");
+    if (htmlTag.innerText == "Login") {
+        alert("Please login or register to play!");
+        showLogin();
+    } else {
+        if (flag == true) {
+            const username = window.localStorage.getItem("username");
+            const password = window.localStorage.getItem("password");
+            const basicAuth = "Basic " + btoa(username + ":" + password);
+            res = fetch("https://cws.auckland.ac.nz/gas/api/PairMe", {
+                method: "GET",
+                headers: {
+                    Accept: "text/plain",
+                    "Content-Type": "application/json",
+                    Authorization: basicAuth,
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => checkGame(data, true, basicAuth));
+        } else {
+            const htmlString = document.getElementById("gameDiv");
+            htmlString.innerHTML = `<button class="submitButton" type="pairSubmit" onclick="userDetails(${false})">Try Game</button>
+    <button class="submitButton" type="pairSubmit" onclick="userDetails(${true})">Quit Game</button>
+    <h5 id="tryGameHeading" class="startPrompt">Waiting for another player to join. Check 'Try Game' 
+    intermittently to see if someone has been paired up with you. 
+    Please do not spam.</h5>`;
+            const username = window.localStorage.getItem("username");
+            const password = window.localStorage.getItem("password");
+            const basicAuth = "Basic " + btoa(username + ":" + password);
+            res = fetch("https://cws.auckland.ac.nz/gas/api/PairMe", {
+                method: "GET",
+                headers: {
+                    Accept: "text/plain",
+                    "Content-Type": "application/json",
+                    Authorization: basicAuth,
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => checkGame(data, false, basicAuth));
+        }
+    }
+};
+
+const userLoginTwo = () => {
+    document.addEventListener("DOMContentLoaded", (e) => {
+        const form = document.getElementById("loginForm");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const username = formData.get("username");
+            const password = formData.get("password");
+            const basicAuth = "Basic " + btoa(username + ":" + password);
+            res = fetch("https://cws.auckland.ac.nz/gas/api/VersionA", {
+                method: "GET",
+                headers: {
+                    Accept: "text/plain",
+                    "Content-Type": "application/json",
+                    Authorization: basicAuth,
+                },
+            })
+                .then((response) => response)
+                .then((data) => userObject(data.status, username, password));
+        });
+    });
+};
+
+const showAllItemsTwo = (items) => {
+    let htmlString = `
+  <tr class='items'>
+  <td class="col-header">Item Photo</td>
+  <td class="col-header">Item ID</td>
+  <td class="col-header">Name</td>
+  <td class="col-header">Description</td>
+  <td class="col-header">Price</td></tr>`;
+    const showItem = (item) => {
+        htmlString += `<tr>
+                   <td><img
+                   class="item-photo"
+                   src="https://cws.auckland.ac.nz/gas/api/ItemPhoto/${item.id}"
+                   alt="photo-of-item"
+                 /></td>
+                   <td>${item.id}</td>
+                   <td>${item.name}</td>
+                   <td>${item.description}</td>
+                   <td>$${item.price}</td>
+                   <td><button onclick="showBuy();">Buy</button></td>
+                   </tr>
+                   `;
+    };
+    items.forEach(showItem);
+    const itemTable = document.getElementById("shopTable");
+    itemTable.innerHTML = htmlString;
+};
